@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: home-of-the-gooners
+  namespace: moshe
+spec:
+  rules:
+    - host: test-moshe.moshe.com
+      http:
+        paths:
+          - backend:
+              serviceName: home-of-the-gooners
+              servicePort: 80
+            path: /

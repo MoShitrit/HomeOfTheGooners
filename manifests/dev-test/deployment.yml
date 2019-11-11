@@ -4,6 +4,7 @@ metadata:
   labels:
     app: home-of-the-gooners
   name: home-of-the-gooners
+  namespace: moshe
 spec:
   selector:
     matchLabels:
