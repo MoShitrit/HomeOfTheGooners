@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: home-of-the-gooners
+  name: home-of-the-gooners
+spec:
+  selector:
+    matchLabels:
+      app: home-of-the-gooners
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: home-of-the-gooners
+    spec:
+      containers:
+      - image: mosheshi/home_of_the_gooners:0.1
+        imagePullPolicy: Always
+        name: home-of-the-gooners
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
